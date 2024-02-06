@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
+import AddItem from "./components/AddItem";
 
 function App() {
+  var [myList, setMylist] = useState([
+    { id: 1, value: "seif", checked: false },
+    { id: 2, value: "rawan ma tetghachech", checked: false },
+    { id: 3, value: "malek dima nice", checked: false },
+  ]);
+  console.log(myList);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input />
+      <button
+        onClick={() => {
+          setMylist([...myList,{ id: 4, value: "malek dima nice", checked: false }]);
+          
+        }}
+      >
+        Add task
+      </button>
+      {myList.map((elem, i) => (
+        <div>
+          <AddItem value={elem.value}/>
+        </div>
+      ))}
     </div>
   );
 }
